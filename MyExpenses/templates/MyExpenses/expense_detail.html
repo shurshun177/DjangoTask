@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    {% if expense.date %}
+        <div class="date">
+            {{ expense.date }}
+        </div>
+    {% endif %}
+    <h1>{{ expense.title }}</h1>
+    <p>{{ expense.description|linebreaksbr }}</p>
+    <p>{{ expense.sum|linebreaksbr }}</p>
+</div>
+<a class="btn btn-default" href="{% url 'expense_edit' pk=expense.pk %}">Edit</a>
+</body>
+</html>

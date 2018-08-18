@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Expenses List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">    <link rel="stylesheet" href="{% static 'css/myexpenses.css' %}">
+</head>
+<body>
+<div>
+    <h1><a href="/">My Expenses List</a></h1>
+</div>
+
+<table class="table table-striped">
+<thead class="thead-dark">
+    <th scope="col">Title</th>
+    <th scope="col">Description</th>
+    <th scope="col">Sum</th>
+    <th scope="col">Date</th>
+<th></th>
+<th></th>
+</thead>
+<tbody>
+    {% for expense in expenses %}
+        <tr>
+            <td>{{ expense.title }}</td>
+            <td>{{ expense.description }}</td>
+            <td>{{ expense.sum }}</td>
+            <td>{{ expense.date }}</td>
+            <td>
+                <a href="{% url 'expense_edit' pk=expense.pk %}">Edit Expense</a>
+            </td>
+            <td>
+                <form action="{% url 'expense_delete' expense.id %}" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="Delete" />
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+</tbody>
+</table>
+<div>
+<a href="{% url 'expense_new' %}" class="top-menu">Add Expense</a>
+</div>
+</body>
+</html>
