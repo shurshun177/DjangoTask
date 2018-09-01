@@ -2,7 +2,8 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.expense_list, name='expense_list'),
+    url(r'^$', views.index, name='index'),
+    url(r'^expenses/list/$', views.expense_list, name='expense_list'),
     url(r'^delete/(?P<pk>\d+)/$', views.ExpenseDelete.as_view(),
         name='expense_delete'),
     url(r'^expense/new/$', views.expense_new, name='expense_new'),

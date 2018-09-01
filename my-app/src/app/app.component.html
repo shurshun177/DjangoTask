@@ -1,0 +1,18 @@
+<h2>My Expenses</h2>
+<ul class="expenses">
+  <li *ngFor="let expense of myexpenses">
+     {{ expense.title}} {{ expense.description }}
+  </li>
+</ul>
+<div>
+  <label>Expense title:
+    <input #expenseTitle />
+  </label>
+    <label>Expense sum:
+    <input #expenseSum />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(expenseTitle.value, expenseSum.value); expenseTitle.value=''; expenseSum.value=''">
+    add expense
+  </button>
+</div>
