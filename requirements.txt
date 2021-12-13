@@ -12,7 +12,7 @@ futures==3.2.0
 gyp==0.1
 html5lib==0.9999999
 idna==2.6
-lxml==4.1.1
+lxml==4.6.5
 Markdown==2.6.11
 mock==2.0.0
 numpy==1.14.1
